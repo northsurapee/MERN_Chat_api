@@ -50,6 +50,11 @@ async function uploadToS3(fileName, mimetype, bufferData) {
     }));
 }
 
+// Endpoint for test
+app.get("/", (req, res) => {
+    res.status(201).json("test");
+});
+
 // Endpoint for verify cookies (use in context provider)
 app.get("/profile", (req, res) => {
     const token = req.cookies?.token;
