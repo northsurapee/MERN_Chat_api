@@ -19,6 +19,7 @@ const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
 const bucket = "mern-chat";
 const clientURL = (process.env.NODE_ENV === "development" ? process.env.DEV_CLIENT_URL : process.env.PRO_CLIENT_URL);
+const PORT = process.env.PORT || 4040;
 
 /// CREATE EXPRESS APP
 const app = express();
@@ -146,7 +147,7 @@ app.post("/logout", async (req, res) => {
 });
 
 // Server listening at localhost:4040
-const server = app.listen(4040);
+const server = app.listen(PORT);
 
 // ---------------------------------------------------------------------------------------
 
