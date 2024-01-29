@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URL);
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
 const bucket = "mern-chat";
+const clientURL = (process.env.NODE_ENV === "development" ? process.env.DEV_CLIENT_URL : process.env.PRO_CLIENT_URL);
 
 /// CREATE EXPRESS APP
 const app = express();
@@ -26,7 +27,7 @@ app.use(cookieParser());
 app.use(
     cors({
       credentials: true,
-      origin: ["http://localhost:5173"],
+      origin: [clientURL],
     }),
   );
 
