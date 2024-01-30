@@ -102,6 +102,7 @@ app.post("/login", async (req, res) => {
         if (passOK) {
              // 3) Like Register (2)
             jwt.sign({userId:foundUser._id, username}, jwtSecret, {}, (err, token) => {
+                console.log("token! : " + token);
                 if (err) throw err;
                 res.cookie('token', token).status(201).json({
                     id: foundUser._id,
@@ -242,5 +243,6 @@ wss.on("connection", (connection, req) => {
     });
 
     // Notify everyone about online people (when someone connects)
+    console.log("Connected to WS!")
     notifyAboutOnlinePeople();
 });
